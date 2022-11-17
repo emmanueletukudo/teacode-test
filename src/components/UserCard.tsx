@@ -12,13 +12,16 @@ import { useUser } from '../contexts/userContext';
 
 type UProps = {
   searchTerm: string
-  handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-const UserCard = ({searchTerm, handleCheck}: UProps) => {
+
+const UserCard = ({searchTerm}: UProps) => {
   const {users} = useUser();
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState<string>("");
 
+  const handleCheck = (id: number) => {
+    console.log(id);
+  }
   return(
     <Box sx={{ width: '100%', maxWidth: 1100, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
@@ -37,7 +40,7 @@ const UserCard = ({searchTerm, handleCheck}: UProps) => {
               </ListItemIcon>
               <ListItemText primary={`${u.first_name} ${u.last_name}`}/>
               <Typography>{u.email}</Typography>
-              <Checkbox {...label} value={check} onChange={(e) => handleCheck(e)} />
+              <Checkbox {...label} value={check} onClick={() => handleCheck(u.id)} onChange={(e) => setCheck(e.target.value)} />
             </ListItemButton>
           </ListItem>
           )) }
