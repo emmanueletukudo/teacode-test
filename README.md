@@ -1,4 +1,5 @@
-# Teacode test
+# Teacode app
+![Teacode app](./screenshot.png)
 
 This is a simple user listing react application with a search filtering feature using react `context` and `hooks`, bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project is built on the [Materia UI](https://mui.com/) framework with basic configuration. 
 
